@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import dynamic from "next/dynamic";
-import Link from 'next/link'
 import { db } from "../firebaseClient";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 // Components
@@ -28,7 +26,7 @@ export async function getServerSideProps() {
 
   const news = []
   const collRef = collection(db, "news");
-  const q = query(collRef, limit(10));
+  const q = query(collRef, limit(10), orderBy("data.timestamp", "desc"));
   
   await getDocs(q).then((snapshot) => {
     snapshot.docs.forEach(doc => {
@@ -42,20 +40,22 @@ export async function getServerSideProps() {
   return {
     props: {
       news: news,
-      weatherData: weatherData,
-      db: JSON.stringify(db)
+      weatherData: weatherData
     }
   }
 }
 
-export default function Home({ news, weatherData, db }) {
+export default function Home({ news, weatherData, setShowPageTransition }) {
   var newsData = news;
 
   newsData = newsData.map(news => JSON.parse(news));
   console.log(newsData)
+
+  PageTransition(setShowPageTransition);
+
   return (
     <div className='home_page page'>
-      <PageTransition />
+
       <h1 style={{display: "none"}}>Hovered News | Faith in Truth</h1>
       <div className='container'>
         <header>

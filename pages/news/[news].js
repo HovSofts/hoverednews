@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router"
 import Image from "next/image";
 import Head from "next/head";
 // Components
@@ -8,7 +7,6 @@ import Comments from "../../components/Comments";
 import PageTransition from '../../components/PageTransition';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebaseClient";
-
 
 export async function getServerSideProps(context) {
   const docRef = doc(db, 'news', context.params.news);
@@ -24,24 +22,21 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      id: context.params.news,
       newsData: JSON.stringify(newsData),
     }
   }
 }
 
-export default function News({ id, newsData }) {
-  const router = useRouter();
-  const { news } = router.query;
-
+export default function News({ newsData, setShowPageTransition }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [data, setData] = useState(JSON.parse(newsData).data);
 
-  console.log(data)
+  console.log(data);
+
+  PageTransition(setShowPageTransition);
 
   return (
     <div className="news_page page">
-      <PageTransition />
 
       <Head>
         <title>{data.title} । Hovered News</title>

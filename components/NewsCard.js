@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// CSS
-// Icons
-import { BangladeshIcon, BusinessIcon, HomeIcon, InternationalIcon, SportsIcon, SearchIcon } from '../assets/icons/NavIcons';
 
 export default function NewsCard(props) {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -17,7 +14,7 @@ export default function NewsCard(props) {
         <Image src={props.thumbnail} alt="News Banner" onLoadingComplete={() => {setTimeout(() => {setImageLoaded(true)}, 500)}} layout="fill" />
       </div>
       <div className="infos">
-        <Link href={props.link}><a className="title" onClick={() => {localStorage.setItem('article_index', props.index)}}>{props.title}</a></Link>
+        <Link href={props.link}><a className="title">{props.title}</a></Link>
         <p className="short-description">{props.description}</p>
         {/* <div className='actions'>
           <Link className='btn_primary' to={props.link}>Read More</Link>

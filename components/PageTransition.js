@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-export default function PageTransition() {
-  const [pageTransition, setPageTransition] = useState(true);
-
+export default function PageTransition(setShowPageTransition) {
   useEffect(() => {
     setTimeout(() => {
-      setPageTransition(true)
+      setShowPageTransition(true)
     }, 0)
     setTimeout(() => {
-      setPageTransition(false)
+      setShowPageTransition(false)
     }, 400)
     setTimeout(() => {
-      setPageTransition('hide')
+      setShowPageTransition('hide')
     }, 800)
   }, [])
-
-  return (
-    <>
-      <div className={pageTransition === 'hide'? '' : pageTransition? 'page_transition active' : 'page_transition'}>
-      </div>
-      <div className="page_transition_line"></div>
-    </>
-  )
 }

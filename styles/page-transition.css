@@ -23,7 +23,7 @@
   top: 0;
   left: 0;
   width: 0;
-  height: 0;
+  height: 3px;
   border-radius: 0 0 20px 20px;
   background: linear-gradient(to right, var(--brandingColor1) 0%, var(--brandingColor2) 100%);
   animation: page_transition_line_animation 1s;

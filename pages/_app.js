@@ -1,4 +1,7 @@
+import { useState } from 'react';
+// Components
 import Layout from '../components/Layout'
+// CSS
 import '../assets/owl carousel/owl.carousel.min.css';
 import '../assets/owl carousel/owl.theme.default.min.css';
 import '../styles/globals.css'
@@ -13,9 +16,11 @@ import '../styles/home.css'
 import '../styles/news.css'
 
 function MyApp({ Component, pageProps }) {
+  const [showPageTransition, setShowPageTransition] = useState(false);
+
   return (
-    <Layout>
-      <Component {...pageProps} />
+    <Layout showPageTransition={showPageTransition}>
+      <Component {...pageProps} setShowPageTransition={setShowPageTransition} />
     </Layout>
   )
 }
