@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from './NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
 import $ from 'jquery';

@@ -79,7 +79,7 @@ export default function News({ newsData, setShowPageTransition }) {
 
           <div className="news_content">
             <div className={imageLoaded? "image_container" : "image_container blur"}>
-              <Image src={data.thumbnail} onLoadingComplete={() => {setTimeout(() => {setImageLoaded(true)}, 500)}} layout="fill" className="image" />
+              <Image src={data.thumbnail} onLoadingComplete={() => {setTimeout(() => {setImageLoaded(true)}, 500)}} layout="fill" className="image" alt="News Banner" />
             </div>
             <br />
             <div dangerouslySetInnerHTML={{__html: data.content}} />
