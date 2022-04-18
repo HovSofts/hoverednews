@@ -3,7 +3,7 @@ import Image from 'next/image';
 import ReactDOMServer from 'react-dom/server';
 import $ from 'jquery'
 
-export default function CommentCard({comment, replies, topParent, canReply}) {
+export default function CommentCard({comment, replies, topParent, canReply, actions}) {
   const [editFormShow, setEditFormShow] = useState(false);
   const [replyFormShow, setReplyFormShow] = useState(false);
   const [commentData, setCommentData] = useState(comment);
@@ -38,7 +38,7 @@ export default function CommentCard({comment, replies, topParent, canReply}) {
     event.preventDefault();
 
     document.querySelector('.comment_card_'+topParent+' .replies').innerHTML += ReactDOMServer.renderToString(<CommentCard comment={{
-      name: 'Forhad Hossain',
+      name: 'Anonymous',
       image: 'https://via.placeholder.com/150',
       createdAt: '03/03/2022',
       text: event.target.reply_comment_text.value,
@@ -53,7 +53,7 @@ export default function CommentCard({comment, replies, topParent, canReply}) {
     <>
       <div className={'comment_card comment_card_'+comment.commentId}>
         <div className='image'>
-          <Image width="100%" src='https://via.placeholder.com/150' layout="fill" alt='Commenter' />
+          <Image width="100%" src={comment.image} layout="fill" alt='Commenter' />
         </div>
         <div className='details'>
           <div className='top'>
@@ -61,15 +61,18 @@ export default function CommentCard({comment, replies, topParent, canReply}) {
               <div className='name'>{commentData.name}</div>
               <div className='date'> - {commentData.createdAt} | </div>
             </div>
-            <div className='actions'>
-              <div className='edit' onClick={() => {setEditFormShow(commentData.text)}}>Edit</div>
-              {
-                canReply?
-                <div className='reply' onClick={() => {setReplyFormShow(true)}}>Reply</div>
-                : ''
-              }
-              <div className='delete'>Delete</div>
-            </div>
+            {
+              actions === 'none'? '' :
+              <div className='actions'>
+                <div className='edit' onClick={() => {setEditFormShow(commentData.text)}}>Edit</div>
+                {
+                  canReply?
+                  <div className='reply' onClick={() => {setReplyFormShow(true)}}>Reply</div>
+                  : ''
+                }
+                <div className='delete'>Delete</div>
+              </div>
+            }
           </div>
           <div className='text'>{commentText}</div>
           

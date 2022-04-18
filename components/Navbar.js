@@ -29,7 +29,23 @@ export default function Navbar() {
     if(showSearchForm){
       $(".search-form-toggle input").focus();
     }
-  }, [showSearchForm])
+  }, [showSearchForm]);
+
+  var objToday = new Date();
+  var domEnder = function() {
+    var a = objToday;
+    if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1));
+    return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th"
+  }();
+  var dayOfMonth = ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder;
+  var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+  var curMonth = months[objToday.getMonth()];
+  var curYear = objToday.getFullYear();
+
+  const today = dayOfMonth + ' ' + curMonth + ", " + curYear;
+  
+  // get current time and am pm
+  const time = new Date().toLocaleTimeString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' });
 
   return (
     <>
@@ -61,14 +77,14 @@ export default function Navbar() {
       {/* Side Nav */}
       <nav className={showSidebar? "side_nav show" : "side_nav"}>
         <div className="date_time select-n">
-          <div className="date">7 August, 2021</div>
-          <div className="time">12:00pm</div>
+          <div className="date">{today}</div>
+          <div className="time">{time}</div>
         </div>
         <div className="profile">
           <div className="image">
             <AvatarIcon />
           </div>
-          <div className="name">Forhad Hossain</div>
+          <div className="name">Anonymous</div>
           <div className="actions">
               <>
                 <Link href="/signup" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} className="signup-btn">Sign In</Link>

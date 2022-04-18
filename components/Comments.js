@@ -6,53 +6,63 @@ export default function Comments() {
   
   const [comments, setComments] = useState([
     {
-      name: 'John Doe',
-      image: 'https://via.placeholder.com/150',
+      name: 'Hovered News',
+      image: require('../assets/images/branding.png'),
       createdAt: '03/03/2022',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+      text: 'The comment section will be arrived soon. Stay tuned!',
       commentId: '1',
-      parentId: null
-    },
-    {
-      name: 'John Doe',
-      image: 'https://via.placeholder.com/150',
-      createdAt: '03/03/2022',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
-      commentId: '2',
-      parentId: null
-    },
-    {
-      name: 'John Doe',
-      image: 'https://via.placeholder.com/150',
-      createdAt: '03/03/2022',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
-      commentId: '4',
-      parentId: '1'
-    },
-    {
-      name: 'John Doe',
-      image: 'https://via.placeholder.com/150',
-      createdAt: '03/03/2022',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
-      commentId: '5',
-      parentId: '2'
-    },
-    {
-      name: 'John Doe',
-      image: 'https://via.placeholder.com/150',
-      createdAt: '03/03/2022',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
-      commentId: '6',
-      parentId: '3'
-    },
-    {
-      name: 'John Doe',
-      image: 'https://via.placeholder.com/150',
-      createdAt: '03/03/2022',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
-      commentId: '3',
-      parentId: null
-    },
+      canReply: false,
+      parentId: null,
+      actions: 'none'
+    }
+    // {
+    //   name: 'John Doe',
+    //   image: 'https://via.placeholder.com/150',
+    //   createdAt: '03/03/2022',
+    //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+    //   commentId: '1',
+    //   parentId: null
+    // },
+    // {
+    //   name: 'John Doe',
+    //   image: 'https://via.placeholder.com/150',
+    //   createdAt: '03/03/2022',
+    //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+    //   commentId: '2',
+    //   parentId: null
+    // },
+    // {
+    //   name: 'John Doe',
+    //   image: 'https://via.placeholder.com/150',
+    //   createdAt: '03/03/2022',
+    //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+    //   commentId: '4',
+    //   parentId: '1'
+    // },
+    // {
+    //   name: 'John Doe',
+    //   image: 'https://via.placeholder.com/150',
+    //   createdAt: '03/03/2022',
+    //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+    //   commentId: '5',
+    //   parentId: '2'
+    // },
+    // {
+    //   name: 'John Doe',
+    //   image: 'https://via.placeholder.com/150',
+    //   createdAt: '03/03/2022',
+    //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+    //   commentId: '6',
+    //   parentId: '3'
+    // },
+    // {
+    //   name: 'John Doe',
+    //   image: 'https://via.placeholder.com/150',
+    //   createdAt: '03/03/2022',
+    //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+    //   commentId: '3',
+    //   parentId: null
+    // },
   ]);
 
   const rootComments = comments.filter(comment => comment.parentId === null);
@@ -65,12 +75,13 @@ export default function Comments() {
     event.preventDefault();
 
     const comment = {
-      name: 'Forhad Hossain',
+      name: 'Anonymous',
       image: 'https://via.placeholder.com/150',
       createdAt: '03/03/2022',
       text: event.target.comment_text.value,
       commentId: comments[comments.length - 1].commentId + 1,
-      parentId: null
+      parentId: null,
+      actions: 'none'
     }
 
     setComments([...comments, comment]);
@@ -84,7 +95,7 @@ export default function Comments() {
         {
           rootComments.map((comment, index) => {
             return(
-              <CommentCard key={index} comment={comment} canReply={true} topParent={comment.commentId} replies={getReplies(comment.commentId)} />
+              <CommentCard key={index} comment={comment} canReply={true} topParent={comment.commentId} replies={getReplies(comment.commentId)} actions={comment.actions} />
             )
           })
         }

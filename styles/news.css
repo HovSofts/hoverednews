@@ -65,9 +65,9 @@
 .news_page .news_content p{
   font-size: 18px;
   font-family: var(--fontFamily1);
-  font-weight: 500;
+  font-weight: 450;
   color: var(--txtColor1);
-  line-height: 33px;
+  line-height: 32px;
 }
 .news_page .news_content .image_container{
   width: 500px;
@@ -111,10 +111,9 @@
   line-height: 33px;
 }
 .news_page .news_content blockquote{
-  font-size: 20px;
   font-size: 18px;
   font-family: var(--fontFamily1);
-  font-weight: 600;
+  font-weight: 550;
   color: var(--txtColor2);
   line-height: 33px;
   position: relative;
