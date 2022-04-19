@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { db } from "../firebaseClient";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import Head from 'next/head'
 // Components
 import NewsCard from '../components/NewsCard'
 import PageTransition from '../components/PageTransition';
@@ -55,8 +56,11 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
 
   return (
     <div className='home_page page'>
-
-      <h1 style={{display: "none"}}>Hovered News | Faith in Truth</h1>
+      <Head>
+        <title>Hovered News</title>
+      </Head>
+      
+      <h1 style={{display: "none"}}>Hovered News</h1>
       <div className='container'>
         <header>
           <div className="header_left">

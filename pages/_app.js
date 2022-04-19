@@ -12,8 +12,11 @@ import '../styles/news-card.css'
 import '../styles/comments.css'
 import '../styles/comment-card.css'
 import '../styles/footer.css'
+import '../styles/404.css'
 import '../styles/home.css'
 import '../styles/news.css'
+import '../styles/topic.css'
+import '../styles/about.css'
 
 function MyApp({ Component, pageProps }) {
   const [showPageTransition, setShowPageTransition] = useState(false);

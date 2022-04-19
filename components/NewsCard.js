@@ -6,7 +6,7 @@ export default function NewsCard(props) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <div className={props.type === "vertical" ? "news_card news_card_2" : "news_card"}>
+    <div className={props.type === "vertical" ? "news_card news_card_2 " + props.index : "news_card "+props.index}>
       {/* {
         props.cardTitle? <Link href="/business" className="card-title"><props.cardTitleIcon /> Business</Link> : <></>
       } */}

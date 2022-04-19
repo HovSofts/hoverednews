@@ -16,10 +16,10 @@ export default function Footer() {
               </div>
               <div className='section_content'>
                 <ul>
-                  <li><Link href='/about'>Home</Link></li>
+                  <li><Link href='/'>Home</Link></li>
                   <li><Link href='/about'>About</Link></li>
                   <li><Link href='/contact'>Contact</Link></li>
-                  <li><Link href='/contact'>Publish</Link></li>
+                  <li><Link href='/privacy'>Privacy Policy</Link></li>
                 </ul>
               </div>
             </div>
@@ -31,11 +31,11 @@ export default function Footer() {
   
               <div className='section_content'>
                 <ul>
-                  <li><Link href='/about'>Bangladesh</Link></li>
-                  <li><Link href='/about'>International</Link></li>
-                  <li><Link href='/services'>Sports</Link></li>
-                  <li><Link href='/portfolio'>Education</Link></li>
-                  <li><Link href='/contact'>Business</Link></li>
+                  <li><Link href='/topic/bangladesh'>Bangladesh</Link></li>
+                  <li><Link href='/topic/international'>International</Link></li>
+                  <li><Link href='/topic/sports'>Sports</Link></li>
+                  <li><Link href='/topic/education'>Education</Link></li>
+                  <li><Link href='/topic/business'>Business</Link></li>
                 </ul>
               </div>
             </div>

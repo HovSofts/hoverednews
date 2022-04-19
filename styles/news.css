@@ -4,6 +4,30 @@
   }
 }
 
+.news_page .not_found{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  border-radius: 10px;
+  width: 100%;
+  background: var(--brandingColor2);
+}
+.news_page .not_found h1{
+  font-size: 30px;
+  font-family: var(--fontFamily1);
+  font-weight: 700;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+@media (max-width: 450px){
+  .news_page .not_found h1{
+    font-size: 25px;
+  }
+}
+
 @media (max-width: 650px){
   .news_page .header{
     padding-left: 10px;

@@ -240,12 +240,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  overflow: visible;
   bottom: 0;
   width: 230px;
   transition: .2s ease;
   background: var(--bgGlass);
-  padding: 23px 25px;
+  padding: 23px 0;
   padding-bottom: 50px !important;
   z-index: 999;
 }
@@ -269,6 +268,7 @@
   font-size: 15px;
   font-family: var(--fontFamily1);
   font-weight: 500;
+  padding: 0 25px;
 }
 
 /* Profile */
@@ -276,6 +276,7 @@
   width: 100%;
   margin-top: 30px;
   text-align: center;
+  padding: 0 25px;
 }
 .side_nav .profile .image{
   height: 70px;
@@ -333,6 +334,11 @@
   margin-top: 30px;
   display: grid;
   grid-gap: 35px;
+  overflow: auto;
+  height: calc(100vh - 325px);
+  max-height: 490px;
+  padding-bottom: 35px;
+  padding: 0 25px;
 }
 .side_nav .links a{
   display: flex;
@@ -386,7 +392,7 @@
     left: -300px;
     transition: .2s;
     z-index: 998;
-    padding: 80px 25px 0;
+    padding: 80px 0 0;
   }
   .side_nav.show{
     left: 0;

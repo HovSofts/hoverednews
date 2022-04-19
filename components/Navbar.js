@@ -4,7 +4,7 @@ import Link from 'next/link';
 import $ from 'jquery';
 // Icons
 import AvatarIcon from '../assets/icons/AvatarIcon';
-import { BangladeshIcon, BusinessIcon, HomeIcon, InternationalIcon, SportsIcon, SearchIcon } from '../assets/icons/NavIcons';
+import { BangladeshIcon, BusinessIcon, HomeIcon, InternationalIcon, SportsIcon, SearchIcon, EducationIcon, TechnologyIcon } from '../assets/icons/NavIcons';
 import CrossIcon from '../assets/icons/CrossIcon';
 
 export default function Navbar() {
@@ -98,31 +98,45 @@ export default function Navbar() {
             </a>
           </Link>
 
-          <Link href="/bangladesh" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
+          <Link href="/topic/bangladesh" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
             <a>
               <div className="icon"><BangladeshIcon /></div>
               <div className="text">Bangladesh</div>
             </a>
           </Link>
 
-          <Link href="/international" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
+          <Link href="/topic/international" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
             <a>
               <div className="icon"><InternationalIcon /></div>
               <div className="text">International</div>
             </a>
           </Link>
 
-          <Link href="/business" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
+          <Link href="/topic/business" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
             <a>
               <div className="icon"><BusinessIcon /></div>
               <div className="text">Business</div>
             </a>
           </Link>
 
-          <Link href="/sports" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
+          <Link href="/topic/sports" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
             <a>
               <div className="icon"><SportsIcon /></div>
               <div className="text">Sports</div>
+            </a>
+          </Link>
+
+          <Link href="/topic/education" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
+            <a>
+              <div className="icon"><EducationIcon /></div>
+              <div className="text">Education</div>
+            </a>
+          </Link>
+
+          <Link href="/topic/technology" activeClassName="active" onClick={() => {setShowSidebar(!showSidebar)}} exact>
+            <a>
+              <div className="icon"><TechnologyIcon /></div>
+              <div className="text">Technology</div>
             </a>
           </Link>
         </div>
