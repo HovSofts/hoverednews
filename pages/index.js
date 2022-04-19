@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import dynamic from "next/dynamic";
 import { db } from "../firebaseClient";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
@@ -54,6 +55,22 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
 
   PageTransition(setShowPageTransition);
 
+  // Get greeting text based on time
+  const [greetingText, setGreetingText] = useState('');
+  
+  useEffect(() => {
+    var currentTime = new Date().getHours();
+    if (currentTime >= 0 && currentTime < 12) {
+      setGreetingText("Good Morning");
+    }
+    else if (currentTime >= 12 && currentTime < 18) {
+      setGreetingText("Good Afternoon");
+    }
+    else if (currentTime >= 18 && currentTime < 24) {
+      setGreetingText("Good Evening");
+    }
+  }, [])
+
   return (
     <div className='home_page page'>
       <Head>
@@ -69,7 +86,7 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
                 <div className="graphics">
                   <GoodNightIcon />
                 </div>
-                <div className="greeting-text select-n">Good Afternoon, <span>Forhad</span></div>
+                <div className="greeting-text select-n">{greetingText}, <span>Anonymous</span></div>
               </div>
   
               <div className="weather_cast">

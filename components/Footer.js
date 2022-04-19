@@ -1,9 +1,21 @@
 import { useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
+import { db } from '../firebaseClient';
+import { arrayUnion, doc, increment, updateDoc } from 'firebase/firestore';
 
 export default function Footer() {
   const [year, setyear] = useState(new Date().getFullYear());
+
+  function subscribe(e){
+    e.preventDefault();
+
+    updateDoc(doc(db, 'app', 'subscribers'), {
+      "data.subscribers": arrayUnion(e.target.email.value)
+    }).then(() => {
+      alert("Subscribed successfully!");
+    })
+  }
 
   return (
     <footer>
@@ -47,13 +59,13 @@ export default function Footer() {
                 <h2>Subscribe Newsletter</h2>
               </div>
               <div className='section_content'>
-                <form className='newsletter_subscribe_form default'>
+                <form className='newsletter_subscribe_form default' onSubmit={subscribe}>
                   <div className='form_header'>
                     <p>Subscribe to our newsletter to get daily updates.</p>
                   </div>
                   <div className='inputs' style={{marginTop: '10px'}}>
                     <div className='input_container'>
-                      <input type='text' placeholder='Enter your email' />
+                      <input type='text' name='email' placeholder='Enter your email' />
                     </div>
                   </div>
 
