@@ -26,12 +26,14 @@
   background: var(--bgColor2);
   align-items: center;
   border-radius: 20px;
+  gap: 15px;
 }
 .home_page header .greetings .graphics{
-  height: 80px;
+  display: flex;
+  align-items: center;
 }
 .home_page header .greetings .graphics svg{
-  height: 80px;
+  width: 70px;
 }
 .home_page header .greetings .greeting-text{
   font-family: var(--fontFamily1);

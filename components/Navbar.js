@@ -43,8 +43,17 @@ export default function Navbar() {
 
   const today = dayOfMonth + ' ' + curMonth + ", " + curYear;
   
-  // get current time and am pm
-  const time = new Date().toLocaleTimeString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' });
+  // Get update of time syncronously
+  const [time, setTime] = useState('');
+
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date().toLocaleTimeString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' }));
+    }, 1000);
+  }, []);
+
+  // Update todays date
+  
 
   return (
     <>

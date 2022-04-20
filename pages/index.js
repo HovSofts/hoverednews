@@ -3,12 +3,12 @@ import dynamic from "next/dynamic";
 import { db } from "../firebaseClient";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import Head from 'next/head'
+import Image from 'next/image'
 // Components
 import NewsCard from '../components/NewsCard'
 import PageTransition from '../components/PageTransition';
 // Icons
-import { GoodNightIcon } from '../assets/icons/GreetingIcons';
-import { MediumSunnyDayIcon } from '../assets/icons/WeatherIcons';
+import { GoodAfternoonIcon, GoodEveningIcon, GoodMorningIcon, GoodNightIcon } from '../assets/icons/GreetingIcons';
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -23,7 +23,7 @@ export async function getServerSideProps() {
   const res = await fetch('https://newsapi.org/v2/everything?q=Apple&from=2022-04-15&sortBy=popularity&apiKey=b12f3d6fcb0745ef9ea4b4e7801a1e99');
   const data = await res.json();
 
-  const weatherRes = await fetch('https://api.weatherapi.com/v1/current.json?key=2d767e9221354e7196964133221504 &q=Bangladesh&aqi=no');
+  const weatherRes = await fetch('https://api.weatherapi.com/v1/current.json?key=2d767e9221354e7196964133221504 &q=Chittagong&aqi=no');
   const weatherData = await weatherRes.json();
 
   const news = []
@@ -66,8 +66,11 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
     else if (currentTime >= 12 && currentTime < 18) {
       setGreetingText("Good Afternoon");
     }
-    else if (currentTime >= 18 && currentTime < 24) {
+    else if (currentTime >= 18 && currentTime < 19) {
       setGreetingText("Good Evening");
+    }
+    else if(currentTime >= 19 && currentTime < 24) {
+      setGreetingText("Good Night");
     }
   }, [])
 
@@ -84,7 +87,15 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
             <div className="weather">
               <div className="greetings">
                 <div className="graphics">
-                  <GoodNightIcon />
+                  {
+                    greetingText === "Good Morning" ?
+                    <GoodMorningIcon /> :
+                    greetingText === "Good Afternoon" ?
+                    <GoodAfternoonIcon /> :
+                    greetingText === "Good Evening" ?
+                    <GoodEveningIcon /> :
+                    <GoodNightIcon />
+                  }
                 </div>
                 <div className="greeting-text select-n">{greetingText}, <span>Anonymous</span></div>
               </div>
@@ -93,7 +104,7 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
                 <div className="info">
                   <div className="left">
                     <div className="graphics">
-                      <MediumSunnyDayIcon />
+                      <Image src={'https:' + weatherData.current.condition.icon} height={90} width={90} />
                     </div>
                     <div className="details">
                       <div className="text">{weatherData.current.condition.text}</div>

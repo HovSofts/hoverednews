@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const nextConfig = {
   reactStrictMode: true,
   images: {
-      domains: ['live.staticflickr.com', 'via.placeholder.com', 'res.cloudinary.com', 'firebasestorage.googleapis.com'],
+      domains: ['firebasestorage.googleapis.com', 'cdn.weatherapi.com'],
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.plugins.push(
