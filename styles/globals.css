@@ -80,6 +80,11 @@ body{
   }
 }
 
+iframe {
+  width: 100%;
+  min-height: 500px;
+}
+
 .page{
   margin-top: -80px;
   padding-bottom: 50px;

@@ -35,7 +35,7 @@
   }
 }
 .news_page .header .title{
-  font-size: 25px;
+  font-size: 23px;
   font-family: var(--fontFamily1);
   font-weight: 700;
   color: var(--txtColor2);
@@ -44,7 +44,7 @@
 .news_page .header .infos{
   display: flex;
   gap: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .news_page .header .infos .info{
   font-size: 15px;
@@ -57,8 +57,54 @@
   color: var(--txtColor1);
 }
 
+.news_page .header .actions{
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bgColor1);
+  border-radius: 10px;
+  box-shadow: 0 0 5px var(--bxShadow1);
+  margin-top: 15px;
+}
+.news_page .header .actions a{
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-family: var(--fontFamily1);
+  font-weight: 500;
+  border: 1px solid var(--brdColor1);
+  cursor: pointer;
+}
+.news_page .header .actions a.circle{
+  padding: 0;
+  width: 40px;
+  border-radius: 50%;
+  justify-content: center;
+}
+.news_page .header .actions a i{
+  font-size: 16px;
+}
+.news_page .header .actions a.icon i{
+  font-size: 25px;
+}
+.news_page .header .actions a span{
+  margin-top: -3px;
+}
+.news_page .header .actions a:hover{
+  background: var(--bgColor2);
+}
+.news_page .header .actions a:active{
+  background: var(--bgColor3);
+}
+
 .news_page .content{
-  margin-top: 50px;
+  margin-top: 20px;
   background: var(--bgColor1);
   padding: 20px;
   display: flex;

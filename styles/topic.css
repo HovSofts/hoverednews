@@ -15,27 +15,33 @@
     padding: 0 30px;
   }
 }
-.topic_page .header.bangladesh{
+.topic_page .header.bangladesh,
+.topic_page .header.Bangladesh{
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 50%,
   rgba(255, 255, 255, 0)), url('../assets/images/topic\ banners/bangladesh.png');
 }
-.topic_page .header.international{
+.topic_page .header.international,
+.topic_page .header.International{
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 50%,
   rgba(255, 255, 255, 0)), url('../assets/images/topic\ banners/international.png');
 }
-.topic_page .header.business{
+.topic_page .header.business,
+.topic_page .header.Business{
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 50%,
   rgba(255, 255, 255, 0)), url('../assets/images/topic\ banners/business.png');
 }
-.topic_page .header.sports{
+.topic_page .header.sports,
+.topic_page .header.Sports{
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 50%,
   rgba(255, 255, 255, 0)), url('../assets/images/topic\ banners/sports.png');
 }
-.topic_page .header.education{
+.topic_page .header.education,
+.topic_page .header.Education{
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 50%,
   rgba(255, 255, 255, 0)), url('../assets/images/topic\ banners/education.png');
 }
-.topic_page .header.technology{
+.topic_page .header.technology,
+.topic_page .header.Technology{
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 50%,
   rgba(255, 255, 255, 0)), url('../assets/images/topic\ banners/technology.png');
 }

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 // Components
 import Comments from "../../components/Comments";
 import PageTransition from '../../components/PageTransition';
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, increment, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseClient";
 
 export async function getServerSideProps(context) {
@@ -32,6 +32,12 @@ export default function News({ newsData, setShowPageTransition }) {
   const [data, setData] = useState(JSON.parse(newsData).data);
 
   PageTransition(setShowPageTransition);
+
+  useEffect(() => {
+    updateDoc(doc(db, 'news', data.id), {
+      "data.views": increment(1)
+    })
+  }, []);
 
   return (
     <div className="news_page page">
@@ -61,8 +67,29 @@ export default function News({ newsData, setShowPageTransition }) {
             <div className="header">
               <h1 className="title">{data.title}</h1>
               <div className="infos">
-                <div className="info"><Link href="/news"><a className="category">Education</a></Link></div>
+                <div className="info views">
+                  <i className="fa-solid fa-eye" /> {data.views}
+                </div>
+
+                <div className="info">
+                  {
+                    data.category.map((category, index) => {
+                      return (
+                        index === data.category.length - 1 ?
+                        <Link href={"/topic/"+category}><a className="category">{category}</a></Link>
+                        :
+                        <Link href={"/topic/"+category}><a className="category">{category}, </a></Link>
+                      )
+                    })
+                  }
+                </div>
                 <div className="date info">{data.date}</div>
+              </div>
+
+              <div className="actions">
+                <a className="circle icon"><i className="fa-brands fa-facebook" /></a>
+                <a><i className="fa-solid fa-share" /> <span>Share</span></a>
+                <a><i className="fa-regular fa-copy" /> <span>Copy Link</span></a>
               </div>
             </div>
     
