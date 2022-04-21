@@ -25,8 +25,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <Layout showPageTransition={showPageTransition}>
       <Head>
-      <meta name="google-site-verification" content="mqdXZIrtnfIDj924tB40w9VUzTsAoG3WCUlBhvjvghE" />
+        <meta name="google-site-verification" content="mqdXZIrtnfIDj924tB40w9VUzTsAoG3WCUlBhvjvghE" />
       </Head>
+
       <Component {...pageProps} setShowPageTransition={setShowPageTransition} />
     </Layout>
   )

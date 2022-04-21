@@ -81,6 +81,8 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
       </Head>
       
       <h1 style={{display: "none"}}>Hovered News</h1>
+      <p style={{display: "none"}}>Latest news about Bangladesh, International, Sports, Education, Technology.</p>
+      
       <div className='container'>
         <header>
           <div className="header_left">
