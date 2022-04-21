@@ -181,6 +181,7 @@
   }
   .home_page header .header_left .weather_cast{
     padding: 10px 0;
+    margin-top: 7px;
   }
   .home_page header .weather_cast .info .left{
     gap: 0;
