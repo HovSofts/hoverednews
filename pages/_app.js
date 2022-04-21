@@ -28,6 +28,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="google-site-verification" content="mqdXZIrtnfIDj924tB40w9VUzTsAoG3WCUlBhvjvghE" />
       </Head>
 
+      <p style={{display: "none"}}>Latest news about Bangladesh, International, Sports, Education, Technology.</p>
+      
       <Component {...pageProps} setShowPageTransition={setShowPageTransition} />
     </Layout>
   )

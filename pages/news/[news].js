@@ -52,6 +52,9 @@ export default function News({ newsData, setShowPageTransition }) {
           <Head>
             <title>{data.title} । Hovered News</title>
             <meta property="og:image" content={data.thumbnail} />
+            <meta property="og:title" content={data.title} />
+            <meta property="og:description" content={data.description} />
+            <meta property="og:url" content={`https://hoverednews.vercel.app/news/${data.id}`} />
           </Head>
     
           <div className="container">

@@ -78,11 +78,14 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
     <div className='home_page page'>
       <Head>
         <title>Hovered News</title>
+        <meta property="og:title" content="Hovered News" />
+        <meta property="og:description" content="Latest news about Bangladesh, International, Sports, Education, Technology." />
+        <meta property="og:url" content="https://hoverednews.vercel.app/" />
       </Head>
       
       <h1 style={{display: "none"}}>Hovered News</h1>
       <p style={{display: "none"}}>Latest news about Bangladesh, International, Sports, Education, Technology.</p>
-      
+
       <div className='container'>
         <header>
           <div className="header_left">

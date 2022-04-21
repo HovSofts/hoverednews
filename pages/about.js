@@ -10,6 +10,9 @@ export default function About({ setShowPageTransition }) {
     <div className='about_page page'>
       <Head>
         <title>About Us । Hovered News</title>
+        <meta property="og:title" content="About । Hovered News" />
+        <meta property="og:description" content="Latest news about Bangladesh, International, Sports, Education, Technology." />
+        <meta property="og:url" content="https://hoverednews.vercel.app/about" />
       </Head>
 
       <div className='container'>
