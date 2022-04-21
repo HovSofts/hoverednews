@@ -21,16 +21,18 @@ import '../styles/about.css'
 
 function MyApp({ Component, pageProps }) {
   const [showPageTransition, setShowPageTransition] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarData, setSnackbarData] = useState({duration: 0, type: '', message: ''});
 
   return (
-    <Layout showPageTransition={showPageTransition}>
+    <Layout showPageTransition={showPageTransition} showSnackbar={showSnackbar} setShowSnackbar={setShowSnackbar} snackbarData={snackbarData}>
       <Head>
         <meta name="google-site-verification" content="mqdXZIrtnfIDj924tB40w9VUzTsAoG3WCUlBhvjvghE" />
       </Head>
 
       <p style={{display: "none"}}>Latest news about Bangladesh, International, Sports, Education, Technology.</p>
       
-      <Component {...pageProps} setShowPageTransition={setShowPageTransition} />
+      <Component {...pageProps} setShowPageTransition={setShowPageTransition} setShowSnackbar={setShowSnackbar} setSnackbarData={setSnackbarData} />
     </Layout>
   )
 }

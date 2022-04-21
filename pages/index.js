@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import dynamic from "next/dynamic";
 import { db } from "../firebaseClient";
-import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit, getDoc, doc } from "firebase/firestore";
 import Head from 'next/head'
 import Image from 'next/image'
 // Components
@@ -39,19 +39,29 @@ export async function getServerSideProps() {
     })
   });
 
+  var newsTickerText = "";
+
+  const docRef = doc(db, "news", "news-ticker");
+  const docSnap = await getDoc(docRef);
+  
+  if(docSnap.exists()){
+    newsTickerText = docSnap.data().data.newsTickerText;
+  }
+
+  console.log(newsTickerText);
+
   return {
     props: {
       news: news,
-      weatherData: weatherData
+      weatherData: weatherData,
+      newsTickerText: newsTickerText,
     }
   }
 }
 
-export default function Home({ news, weatherData, setShowPageTransition }) {
+export default function Home({ news, weatherData, newsTickerText, setShowPageTransition }) {
   var newsData = news;
-
   newsData = newsData.map(news => JSON.parse(news));
-  console.log(newsData)
 
   PageTransition(setShowPageTransition);
 
@@ -169,7 +179,7 @@ export default function Home({ news, weatherData, setShowPageTransition }) {
         {/***** News Ticker *****/}
         <section className="news_ticker">
           <div className="title select-n">Highlights</div>
-          <marquee>Bangladesh is celebrating Pohela Boishakh. CodoHov is one of the largest online teaching platform in Bangladesh. It provides computer training courses related on Programming, Software Development and Career track.</marquee>
+          <marquee>{newsTickerText}</marquee>
         </section>
   
         {/***** Trending News Section *****/}

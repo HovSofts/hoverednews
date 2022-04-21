@@ -80,11 +80,6 @@ body{
   }
 }
 
-iframe {
-  width: 100%;
-  min-height: 500px;
-}
-
 .page{
   margin-top: -80px;
   padding-bottom: 50px;
@@ -197,4 +192,8 @@ input[type="search"]::-webkit-search-results-decoration {
   transition: .2s ease;
   border-radius: 5px;
   color: #ffffff;
+}
+
+.MuiPaper-root{
+  background: var(--bgColor4) !important;
 }

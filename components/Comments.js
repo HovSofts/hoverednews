@@ -101,7 +101,7 @@ export default function Comments() {
         }
       </div>
 
-      <form className='add_comment_form default bg_w' style={{marginTop: '30px'}} onSubmit={addComment}>
+      <form className='add_comment_form default bg_w' style={{marginTop: '30px'}}>
         <div className='input_container'>
           <label htmlFor='add_comment_input'>Add a comment</label>
           <textarea id='add_comment_input' style={{height: '80px'}} placeholder='Write your comment here...' name='comment_text' required></textarea>

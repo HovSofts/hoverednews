@@ -1,8 +1,11 @@
 import Script from 'next/script'
+// Components
 import Navbar from "./Navbar"
 import Footer from "./Footer"
+import { Snackbar } from "@mui/material";
+import { Alert } from "@mui/material";
 
-export default function Layout({ children, showPageTransition }) {
+export default function Layout({ children, showPageTransition, showSnackbar, snackbarData, setShowSnackbar }) {
   
   return (
     <>
@@ -15,6 +18,14 @@ export default function Layout({ children, showPageTransition }) {
           : ''
         }
       </>
+
+      {
+        <Snackbar open={showSnackbar} autoHideDuration={snackbarData.duration} onClose={() => {setShowSnackbar(false)}}>
+          <Alert onClose={() => {setShowSnackbar(false)}} severity={snackbarData.type} sx={{ width: '100%' }}>
+            {snackbarData.message}
+          </Alert>
+        </Snackbar>
+      }
 
       <div className="app">
         <Script src="https://kit.fontawesome.com/19b88b9e2d.js" crossorigin="anonymous" />

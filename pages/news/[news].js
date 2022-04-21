@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function News({ newsData, setShowPageTransition }) {
+export default function News({ newsData, setShowPageTransition, setShowSnackbar, setSnackbarData }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [data, setData] = useState(JSON.parse(newsData).data);
 
@@ -38,6 +38,36 @@ export default function News({ newsData, setShowPageTransition }) {
       "data.views": increment(1)
     })
   }, []);
+
+  function share(){
+    const shareData = {
+      title: data.title,
+      text: data.title,
+      url: 'https://hoverednews.vercel.app/news/' + data.id,
+    }
+
+    if (navigator.share) {
+      navigator.share(shareData).then(() => {
+        console.log('Successful share')
+      }).catch((error) => {
+        console.log('Error sharing', error)
+      })
+    }
+    else{
+      console.log('Share not supported')
+    }
+  }
+
+  function copyURL(){
+    navigator.clipboard.writeText('https://hoverednews.vercel.app/news/' + data.id).then(() => {
+      setShowSnackbar(true);
+      setSnackbarData({
+        duration: 6000,
+        message: 'URL copied to clipboard',
+        type: 'success'
+      })
+    })
+  }
 
   return (
     <div className="news_page page">
@@ -68,7 +98,7 @@ export default function News({ newsData, setShowPageTransition }) {
               <h1 className="title">{data.title}</h1>
               <div className="infos">
                 <div className="info views">
-                  <i className="fa-solid fa-eye" /> {data.views}
+                  <i className="fa-solid fa-eye" /> {data.views + 1}
                 </div>
 
                 <div className="info">
@@ -88,8 +118,8 @@ export default function News({ newsData, setShowPageTransition }) {
 
               <div className="actions">
                 <a className="circle icon"><i className="fa-brands fa-facebook" /></a>
-                <a><i className="fa-solid fa-share" /> <span>Share</span></a>
-                <a><i className="fa-regular fa-copy" /> <span>Copy Link</span></a>
+                <a onClick={share}><i className="fa-solid fa-share" /> <span>Share</span></a>
+                <a onClick={copyURL}><i className="fa-regular fa-copy" /> <span>Copy Link</span></a>
               </div>
             </div>
     
