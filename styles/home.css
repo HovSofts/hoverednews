@@ -176,6 +176,12 @@
   }
 }
 @media only screen and (max-width: 460px){
+  .home_page header .header_left{
+    height: unset !important;
+  }
+  .home_page header .header_left .weather_cast{
+    padding: 10px 0;
+  }
   .home_page header .weather_cast .info .left{
     gap: 0;
   }
@@ -208,9 +214,6 @@
   }
 }
 @media only screen and (max-width: 390px){
-  .home_page header .header_left{
-    height: unset !important;
-  }
   .home_page header .weather_cast{
     padding-top: 10px;
     position: relative;
