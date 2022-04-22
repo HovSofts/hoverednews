@@ -18,6 +18,7 @@ import '../styles/home.css'
 import '../styles/news.css'
 import '../styles/topic.css'
 import '../styles/about.css'
+import '../styles/contact.css'
 
 function MyApp({ Component, pageProps }) {
   const [showPageTransition, setShowPageTransition] = useState(false);
