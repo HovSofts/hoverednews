@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Script from 'next/script'
 // Components
 import NewsCard from '../../components/NewsCard'
 import { collection, getDocs, where, query, limit, orderBy } from 'firebase/firestore'
@@ -50,6 +51,7 @@ export default function Topic({ topic, topicTitle, news, setShowPageTransition }
 
   return (
     <div className='topic_page page'>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3563302535835946" crossorigin="anonymous" />
       <Head>
         <title>{topicTitle} । Hovered News</title>
       </Head>

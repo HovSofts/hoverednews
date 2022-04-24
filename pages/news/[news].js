@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import Script from "next/script";
 // Components
 import Comments from "../../components/Comments";
 import PageTransition from '../../components/PageTransition';
@@ -71,6 +72,7 @@ export default function News({ newsData, setShowPageTransition, setShowSnackbar,
 
   return (
     <div className="news_page page">
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3563302535835946" crossorigin="anonymous" />
       {
         JSON.parse(newsData) === 'not found' ?
         <div className="container">

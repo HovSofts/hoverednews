@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { db } from "../firebaseClient";
 import { collection, getDocs, query, orderBy, limit, getDoc, doc } from "firebase/firestore";
 import Head from 'next/head'
+import Script from 'next/script';
 import Image from 'next/image'
 // Components
 import NewsCard from '../components/NewsCard'
@@ -86,6 +87,7 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
 
   return (
     <div className='home_page page'>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3563302535835946" crossorigin="anonymous" />
       <Head>
         <title>Hovered News</title>
         <meta property="og:title" content="Hovered News" />
