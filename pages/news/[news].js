@@ -35,9 +35,11 @@ export default function News({ newsData, setShowPageTransition, setShowSnackbar,
   PageTransition(setShowPageTransition);
 
   useEffect(() => {
-    updateDoc(doc(db, 'news', data.id), {
-      "data.views": increment(1)
-    })
+    if(!JSON.parse(newsData) === 'not found') {
+      updateDoc(doc(db, 'news', data.id), {
+        "data.views": increment(1)
+      })
+    }
   }, []);
 
   function share(){
