@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head'
 import Script from 'next/script';
 // Components
@@ -21,11 +21,19 @@ import '../styles/topic.css'
 import '../styles/about.css'
 import '../styles/contact.css'
 import '../styles/privacy.css'
+import { doc, increment, updateDoc } from 'firebase/firestore';
+import { db } from '../firebaseClient';
 
 function MyApp({ Component, pageProps }) {
   const [showPageTransition, setShowPageTransition] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarData, setSnackbarData] = useState({duration: 0, type: '', message: ''});
+
+  useEffect(() => {
+    updateDoc(doc(db, 'app', 'adminData'), {
+      "data.siteVisits": increment(1)
+    })
+  }, [])
 
   return (
     <Layout showPageTransition={showPageTransition} showSnackbar={showSnackbar} setShowSnackbar={setShowSnackbar} snackbarData={snackbarData}>
