@@ -121,9 +121,9 @@ export default function News({ newsData, setShowPageTransition, setShowSnackbar,
               </div>
 
               <div className="actions">
-                <a className="circle icon"><i className="fa-brands fa-facebook" /></a>
-                <a onClick={share}><i className="fa-solid fa-share" /> <span>Share</span></a>
-                <a onClick={copyURL}><i className="fa-regular fa-copy" /> <span>Copy Link</span></a>
+                <a className="circle icon select_n"><i className="fa-brands fa-facebook" /></a>
+                <a onClick={share} className="select_n"><i className="fa-solid fa-share" /> <span>Share</span></a>
+                <a onClick={copyURL} className="select_n"><i className="fa-regular fa-copy" /> <span>Copy Link</span></a>
               </div>
             </div>
     
