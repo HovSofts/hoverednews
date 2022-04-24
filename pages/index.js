@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import dynamic from "next/dynamic";
 import { db } from "../firebaseClient";
-import { collection, getDocs, query, orderBy, limit, getDoc, doc } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit, getDoc, doc, where } from "firebase/firestore";
 import Head from 'next/head'
 import Script from 'next/script';
 import Image from 'next/image'
@@ -29,7 +29,7 @@ export async function getServerSideProps() {
 
   const news = []
   const collRef = collection(db, "news");
-  const q = query(collRef, limit(10), orderBy("data.timestamp", "desc"));
+  const q = query(collRef, limit(10), orderBy("data.timestamp", "desc"), where("data.visibility", "==", "public"));
   
   await getDocs(q).then((snapshot) => {
     snapshot.docs.forEach(doc => {
