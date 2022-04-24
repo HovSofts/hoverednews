@@ -331,11 +331,12 @@
 
 /* Links */
 .side_nav .links{
-  margin-top: 80px;
+  margin-top: 30px;
   display: grid;
-  grid-gap: 0px;
+  grid-gap: 25px;
   overflow: auto;
-  min-height: 450px;
+  height: calc(100vh - 350px);
+  max-height: 400px;
   padding-bottom: 35px;
   padding: 0 25px;
 }

@@ -88,7 +88,7 @@ export default function Navbar() {
           <div className="date">{today}</div>
           <div className="time">{time}</div>
         </div>
-        {/* <div className="profile">
+        <div className="profile">
           <div className="image">
             <AvatarIcon />
           </div>
@@ -98,7 +98,7 @@ export default function Navbar() {
                 <Link href="/signup" className="signup-btn">Sign In</Link>
               </>
           </div>
-        </div> */}
+        </div>
         <div className="links select-n">
           <Link href="/" activeClassName="active" exact>
             <a onClick={() => {setShowSidebar(!showSidebar)}}>
