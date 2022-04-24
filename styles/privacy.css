@@ -22,9 +22,28 @@
 
 .privacy_page .privacy_text{
   padding: 40px 0 0;
-  font-size: 18px;
+  font-size: 20px;
   font-family: var(--fontFamily1);
   font-weight: 400;
+  color: var(--txtColor1);
+  line-height: 33px;
+  max-width: 800px;
+}
+
+.privacy_page .privacy_text h2{
+  font-size: 20px;
+  font-family: var(--fontFamily1);
+  font-weight: 700;
   color: var(--color1);
-  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+
+.privacy_page .privacy_text ul{
+  padding-left: 25px;
+  margin-top: 20px;
+}
+.privacy_page .privacy_text ul li{
+  color: var(--txtColor1);
 }

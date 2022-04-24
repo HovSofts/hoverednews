@@ -104,7 +104,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
-.select-n, .select-n *, img, a, label{
+.select-n, .select-n *, img, label{
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;

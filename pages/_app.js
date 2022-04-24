@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head'
+import Script from 'next/script';
 // Components
 import Layout from '../components/Layout'
 // CSS
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout showPageTransition={showPageTransition} showSnackbar={showSnackbar} setShowSnackbar={setShowSnackbar} snackbarData={snackbarData}>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3563302535835946" crossorigin="anonymous" />
       <Head>
         <meta name="google-site-verification" content="mqdXZIrtnfIDj924tB40w9VUzTsAoG3WCUlBhvjvghE" />
       </Head>

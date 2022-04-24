@@ -302,9 +302,17 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media only screen and (max-width: 550px){
+@media only screen and (max-width: 600px){
+  .home_page section.category_news .cards_container{
+    grid-gap: 10px;
+  }
+}
+@media only screen and (max-width: 500px){
   .home_page section.category_news .cards_container{
     grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 /* Category News Sections CSS End */
