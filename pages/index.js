@@ -114,7 +114,7 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
                     <GoodNightIcon />
                   }
                 </div>
-                <div className="greeting-text select-n">{greetingText}, <span>Anonymous</span></div>
+                <div className="greeting-text select-n">{greetingText}</div>
               </div>
   
               <div className="weather_cast">
