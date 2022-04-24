@@ -214,7 +214,7 @@
     margin-top: 20px;
   }
 }
-@media only screen and (max-width: 390px){
+@media only screen and (max-width: 310px){
   .home_page header .weather_cast{
     padding-top: 10px;
     position: relative;
@@ -229,7 +229,13 @@
   .home_page header .weather_cast .info .left{
     flex-direction: column;
     align-items: flex-start;
-    gap: 0;
+    gap: 10px;
+  }
+  .home_page header .weather_cast .info .left .details{
+    padding-left: 10px;
+  }
+  .home_page header .weather_cast .temperature{
+    padding-right: 10px;
   }
   .home_page header .weather_cast .temperature span{
     font-size: 40px;

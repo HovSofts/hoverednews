@@ -125,7 +125,7 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
                     </div>
                     <div className="details">
                       <div className="text">{weatherData.current.condition.text}</div>
-                      <div className="location">{weatherData.location.name+', '+weatherData.location.country}</div>
+                      <div className="location">{weatherData.location.name}</div>
                     </div>
                   </div>
                   <div className="right">
