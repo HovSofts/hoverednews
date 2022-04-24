@@ -333,10 +333,9 @@
 .side_nav .links{
   margin-top: 80px;
   display: grid;
-  grid-gap: 35px;
+  grid-gap: 0px;
   overflow: auto;
-  height: calc(100vh - 345px);
-  max-height: 445px;
+  min-height: 450px;
   padding-bottom: 35px;
   padding: 0 25px;
 }
