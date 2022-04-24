@@ -35,7 +35,10 @@ export default function News({ newsData, setShowPageTransition, setShowSnackbar,
   PageTransition(setShowPageTransition);
 
   useEffect(() => {
-    if(!JSON.parse(newsData) === 'not found') {
+    if(JSON.parse(newsData) === 'not found') {
+      return;
+    }
+    else{
       updateDoc(doc(db, 'news', data.id), {
         "data.views": increment(1)
       })

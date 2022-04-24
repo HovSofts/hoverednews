@@ -60,7 +60,7 @@ export default function Navbar() {
       {/* Top Nav */}
       <nav className="main_nav">
         <div className='container'>
-          <div className={showSidebar? "sidebar-toggle animate select-n" : "sidebar-toggle select-n"} onClick={() => {setShowSidebar(!showSidebar)}}><div></div></div>
+          <div className={showSidebar? "sidebar-toggle animate select_n" : "sidebar-toggle select_n"} onClick={() => {setShowSidebar(!showSidebar)}}><div></div></div>
           <Link href="/">
             <div className='branding'>
               <Image src={require('../assets/images/branding.png')} alt="Hovered News" />
@@ -84,7 +84,7 @@ export default function Navbar() {
 
       {/* Side Nav */}
       <nav className={showSidebar? "side_nav show" : "side_nav"}>
-        <div className="date_time select-n">
+        <div className="date_time select_n">
           <div className="date">{today}</div>
           <div className="time">{time}</div>
         </div>
@@ -99,7 +99,7 @@ export default function Navbar() {
               </>
           </div>
         </div>
-        <div className="links select-n">
+        <div className="links select_n">
           <Link href="/" activeClassName="active" exact>
             <a onClick={() => {setShowSidebar(!showSidebar)}}>
               <div className="icon"><HomeIcon /></div>

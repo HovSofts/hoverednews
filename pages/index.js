@@ -114,7 +114,7 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
                     <GoodNightIcon />
                   }
                 </div>
-                <div className="greeting-text select-n">{greetingText}</div>
+                <div className="greeting-text select_n">{greetingText}</div>
               </div>
   
               <div className="weather_cast">
@@ -180,7 +180,7 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
   
         {/***** News Ticker *****/}
         <section className="news_ticker">
-          <div className="title select-n">Highlights</div>
+          <div className="title select_n">Highlights</div>
           <marquee>{newsTickerText}</marquee>
         </section>
   
