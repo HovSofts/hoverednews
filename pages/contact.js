@@ -52,16 +52,16 @@ export default function Contact({ setShowPageTransition }) {
   
                 <div className='inputs'>
                   <div className='input_container'>
-                    <label htmlFor='name'>Your Name</label>
-                    <input type='text' id='name' />
+                    <label htmlFor='name'>Name</label>
+                    <input type='text' id='name' name='name' placeholder='Your Name' />
                   </div>
                   <div className='input_container'>
-                    <label htmlFor='email'>Your Email</label>
-                    <input type='email' id='email' />
+                    <label htmlFor='email'>Email</label>
+                    <input type='email' id='email' name='email' placeholder='Your Email' />
                   </div>
                   <div className='input_container'>
-                    <label htmlFor='subject'>Your Message</label>
-                    <textarea type='text' id='subject'></textarea>
+                    <label htmlFor='subject'>Message</label>
+                    <textarea type='text' id='subject' name='message' placeholder='Your Message'></textarea>
                   </div>
                 </div>
 

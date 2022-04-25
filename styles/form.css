@@ -81,7 +81,8 @@ form.default.bg_w select option,
 form.default.bg_w textarea{
   background: var(--bgColor1);
 }
-form.default input:focus{
+form.default input:focus,
+form.default textarea:focus{
   box-shadow: 0 0 0 2px var(--brandingColor2);
 }
 form.default .input_container.radio input{
