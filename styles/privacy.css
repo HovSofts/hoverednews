@@ -29,6 +29,10 @@
   line-height: 33px;
   max-width: 800px;
 }
+.privacy_page .privacy_text a{
+  word-break: break-all;
+  font-weight: 600;
+}
 
 .privacy_page .privacy_text h2{
   font-size: 20px;

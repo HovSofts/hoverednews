@@ -62,8 +62,6 @@ export async function getServerSideProps() {
     newsTickerText = docSnap.data().data.newsTickerText;
   }
 
-  console.log(newsTickerText);
-
   return {
     props: {
       latestNews: latestNews,
