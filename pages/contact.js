@@ -1,9 +1,30 @@
 import React from 'react'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebaseClient';
 // Components
 import PageTransition from '../components/PageTransition'
 
-export default function Contact({ setShowPageTransition }) {
+export default function Contact({ setShowPageTransition, currentUser }) {
   PageTransition(setShowPageTransition);
+
+  function sendMessage(e){
+    e.preventDefault();
+
+    addDoc(collection(db, 'contacts'), {
+      data: {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value,
+        uid: currentUser.uid,
+        date: serverTimestamp()
+      }
+    }).then(() => {
+      document.querySelector('.contact_form').reset()
+      alert('Message sent!');
+    }).catch((error) => {
+      alert('Something went wrong. Please try again.')
+    })
+  }
 
   return (
     <div className='contact_page page'>
@@ -47,7 +68,7 @@ export default function Contact({ setShowPageTransition }) {
         <div className='wrapper'>
           <div className='left'>
             <section>
-              <form className='contact_form default bg_w'>
+              <form className='contact_form default bg_w' onSubmit={sendMessage}>
                 <div className='section_title'>Send Us a Message</div>
   
                 <div className='inputs'>
