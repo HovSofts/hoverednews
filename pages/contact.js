@@ -37,7 +37,7 @@ export default function Contact({ setShowPageTransition, currentUser }) {
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.040553694544!2d91.81285531532825!3d22.352097546660424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd91a24a02a19%3A0xce7ea8d88967fea1!2sHovered!5e0!3m2!1sen!2sbd!4v1650620126657!5m2!1sen!2sbd" width={600} height={450} style={{border: 0}} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </div>
 
-        <section className='contact_info'>
+        <div className='section contact_info'>
           <div className='content'>
             <div className='item'>
               <div className='icon'>
@@ -63,14 +63,16 @@ export default function Contact({ setShowPageTransition, currentUser }) {
               <span>hoverednews@gmail.com</span>
             </div>
           </div>
-        </section>
+        </div>
 
         <div className='wrapper'>
           <div className='left'>
-            <section>
+            <section className='section'>
+              <div className='section_header'>
+                <h2>Send Us a Message</h2>
+              </div>
+              
               <form className='contact_form default bg_w' onSubmit={sendMessage}>
-                <div className='section_title'>Send Us a Message</div>
-  
                 <div className='inputs'>
                   <div className='input_container'>
                     <label htmlFor='name'>Name</label>
@@ -94,8 +96,10 @@ export default function Contact({ setShowPageTransition, currentUser }) {
           </div>
 
           <div className='right'>
-            <section className='faqs'>
-              <div className='section_title'>Frequently Asked Questions</div>
+            <section className='faqs section'>
+              <div className='section_header'>
+                <h2>Frequently Asked Questions</h2>
+              </div>
                
               <div className='content'>
                 <div className='item'>
