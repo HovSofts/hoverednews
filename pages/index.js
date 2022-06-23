@@ -168,7 +168,7 @@ export default function Home({ latestNews, topNews, weatherData, newsTickerText,
               dots={false}
             >
               {
-                latestNewsData.map((news, index) => {
+                topNewsData.reverse().map((news, index) => {
                   return (
                     <NewsCard 
                       thumbnail={news.thumbnail}
