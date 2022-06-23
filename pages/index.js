@@ -138,7 +138,7 @@ export default function Home({ latestNews, topNews, weatherData, newsTickerText,
                 <div className="info">
                   <div className="left">
                     <div className="graphics">
-                      <Image src={'https:' + weatherData.current.condition.icon} height={90} width={90} />
+                      <Image src={'https:' + weatherData.current.condition.icon} alt='Weather Condition' height={90} width={90} />
                     </div>
                     <div className="details">
                       <div className="text">{weatherData.current.condition.text}</div>
