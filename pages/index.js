@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import dynamic from "next/dynamic";
+import Link from 'next/link';
 import { db } from "../firebaseClient";
 import { collection, getDocs, query, orderBy, limit, getDoc, doc, where } from "firebase/firestore";
 import Head from 'next/head'
@@ -21,22 +22,34 @@ const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
 });
 
 export async function getServerSideProps() {
-  const res = await fetch('https://newsapi.org/v2/everything?q=Apple&from=2022-04-15&sortBy=popularity&apiKey=b12f3d6fcb0745ef9ea4b4e7801a1e99');
-  const data = await res.json();
-
   const weatherRes = await fetch('https://api.weatherapi.com/v1/current.json?key=2d767e9221354e7196964133221504 &q=Chittagong&aqi=no');
   const weatherData = await weatherRes.json();
 
-  const news = []
   const collRef = collection(db, "news");
-  const q = query(collRef, limit(10), orderBy("data.timestamp", "desc"), where("data.visibility", "==", "public"));
+
+  // Latest News
+  const latestNews = []
+  const latestNewsQuery = query(collRef, limit(8), orderBy("data.timestamp", "desc"), where("data.visibility", "==", "public"));
   
-  await getDocs(q).then((snapshot) => {
+  await getDocs(latestNewsQuery).then((snapshot) => {
     snapshot.docs.forEach(doc => {
       var docData = doc.data().data;
       docData.id = doc.id;
       
-      news.push(JSON.stringify(docData));
+      latestNews.push(JSON.stringify(docData));
+    })
+  });
+
+  // Top News
+  const topNews = []
+  const topNewsQuery = query(collRef, limit(8), orderBy("data.views"), where("data.visibility", "==", "public"));
+  
+  await getDocs(topNewsQuery).then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+      var docData = doc.data().data;
+      docData.id = doc.id;
+      
+      topNews.push(JSON.stringify(docData));
     })
   });
 
@@ -53,16 +66,20 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      news: news,
+      latestNews: latestNews,
+      topNews: topNews,
       weatherData: weatherData,
       newsTickerText: newsTickerText,
     }
   }
 }
 
-export default function Home({ news, weatherData, newsTickerText, setShowPageTransition }) {
-  var newsData = news;
-  newsData = newsData.map(news => JSON.parse(news));
+export default function Home({ latestNews, topNews, weatherData, newsTickerText, setShowPageTransition }) {
+  var latestNewsData = latestNews;
+  var topNewsData = topNews;
+
+  latestNewsData = latestNewsData.map(latestNews => JSON.parse(latestNews));
+  topNewsData = topNewsData.map(topNews => JSON.parse(topNews));
 
   PageTransition(setShowPageTransition);
 
@@ -136,16 +153,6 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
             </div>
           </div>
           <div className="header_right">
-            {/* <div className="hottest-news">
-              <div className="thumbnail">
-                <Image src={require('../assets/images/banner.png')} alt="News Banner" layout="fill" objectFit='contain' />
-              </div>
-              <div className="infos">
-                <Link href="/codohov"><a className="title">Bangladesh is celebrating Pohela Boishakh.</a></Link>
-                <p className="short-description">CodoHov is one of the largest online teaching platform in Bangladesh. It provides computer training courses related on Programming, Software Development and Career track. In this season they are reaching out 10,000 number of students of their institute. It&apos;s CEOs Forhad Hossain and Shafkat Jahan says, "We are trying to reach more people by simplifying our services.</p>
-              </div>
-            </div> */}
-            
             <OwlCarousel
               className='owl-theme'
               items={1}
@@ -161,7 +168,7 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
               dots={false}
             >
               {
-                newsData.map((news, index) => {
+                latestNewsData.map((news, index) => {
                   return (
                     <NewsCard 
                       thumbnail={news.thumbnail}
@@ -178,41 +185,96 @@ export default function Home({ news, weatherData, newsTickerText, setShowPageTra
           </div>
         </header>
   
-        {/***** News Ticker *****/}
+        {/* News Ticker */}
         <section className="news_ticker">
           <div className="title select_n">Highlights</div>
           <marquee>{newsTickerText}</marquee>
         </section>
   
-        {/***** Trending News Section *****/}
-        <section className="trending-news category_news">
-          <div className="section_title">Latest News</div>
-          <div className="cards_container">
-            {/* <NewsCard 
-              type="vertical"
-              thumbnail={require('../assets/images/banner.png')}
-              title="Bangladesh is celebrating Pohela Boishakh."
-              description="CodoHov is one of the largest online teaching platform in Bangladesh. It provides computer training courses related on Programming, Software Development and Career track."
-              link="/codohov"
-            /> */}
-            {
-              newsData.map((news, index) => {
-                return (
-                  <NewsCard 
-                    type="vertical"
-                    thumbnail={news.thumbnail}
-                    title={news.title}
-                    description={news.description}
-                    index={index}
-                    link={"/news/"+news.id}
-                    key={index}
-                  />
-                )
-              })
-            }
+        {/* Trending News Section */}
+        <section className="latest_news grid_news_section">
+          <div className='section_header'>
+            <h2>Latest News</h2>
+          </div>
+
+          <div className='section_content'>
+            <div className='news_container'>
+              {
+                latestNewsData.map((news, index) => {
+                  return (
+                    <NewsCard 
+                      type="vertical"
+                      thumbnail={news.thumbnail}
+                      title={news.title}
+                      description={news.description}
+                      index={index}
+                      link={"/news/"+news.id}
+                      key={index}
+                    />
+                  )
+                })
+              }
+            </div>
           </div>
         </section>
-        {/***** Trending News Section *****/}
+        {/* Trending News Section */}
+
+        {/* News Categories Section */}
+        <section className='news_categories'>
+          <div className='section_content m_n'>
+            <div className='categories_container'>
+              <Link href='topic/education'>
+                <div className='card education'>
+                <h2>Education</h2>
+                </div>
+              </Link>
+              <Link href='topic/international'>
+                <div className='card international'>
+                  <h2>International</h2>
+                </div>
+              </Link>
+              <Link href='topic/bangladesh'>
+                <div className='card bangladesh'>
+                  <h2>Bangladesh</h2>
+                </div>
+              </Link>
+              <Link href='topic/business'>
+                <div className='card business'>
+                  <h2>Business</h2>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+        {/* News Categories Section End */}
+
+        {/* Top News Section */}
+        <section className='top_news grid_news_section'>
+          <div className='section_header'>
+            <h2>Top News</h2>
+          </div>
+
+          <div className='section_content'>
+            <div className='news_container'>
+              {
+                topNewsData.map((news, index) => {
+                  return (
+                    <NewsCard 
+                      type="vertical"
+                      thumbnail={news.thumbnail}
+                      title={news.title}
+                      description={news.description}
+                      index={index}
+                      link={"/news/"+news.id}
+                      key={index}
+                    />
+                  )
+                })
+              }
+            </div>
+          </div>
+        </section>
+        {/* Top News Section End */}
       </div>
     </div>
   )

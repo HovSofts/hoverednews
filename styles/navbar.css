@@ -279,8 +279,8 @@
   padding: 0 25px;
 }
 .side_nav .profile .image{
-  height: 70px;
-  width: 70px;
+  height: 90px;
+  width: 90px;
   border-radius: 50%;
   margin: 0 auto;
   overflow: hidden;
@@ -319,9 +319,6 @@
   height: 30px;
   width: 100%;
 }
-.side_nav .profile .actions a:hover{
-  box-shadow: 0 0 5px var(--brandingColor2);
-}
 .side_nav .profile .actions a:active{
   box-shadow: none;
 }
@@ -337,8 +334,8 @@
   overflow: auto;
   height: calc(100vh - 350px);
   max-height: 400px;
-  padding-bottom: 35px;
   padding: 0 25px;
+  padding-top: 5px;
 }
 .side_nav .links a{
   display: flex;

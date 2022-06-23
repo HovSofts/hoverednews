@@ -7,8 +7,7 @@ import AvatarIcon from '../assets/icons/AvatarIcon';
 import { BangladeshIcon, BusinessIcon, HomeIcon, InternationalIcon, SportsIcon, SearchIcon, EducationIcon, TechnologyIcon } from '../assets/icons/NavIcons';
 import CrossIcon from '../assets/icons/CrossIcon';
 
-export default function Navbar() {
-  const [user, setUser] = useState(null);
+export default function Navbar({ user, currentUser, uid, avatar }) {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showSearchForm, setShowSearchForm] = useState(false);
 
@@ -90,13 +89,13 @@ export default function Navbar() {
         </div>
         <div className="profile">
           <div className="image">
-            <AvatarIcon />
+            <Image src={avatar} alt='Avatar' height={100} width={100} />
           </div>
-          <div className="name">Anonymous</div>
+          <div className="name">{currentUser.displayName}</div>
           <div className="actions">
-              <>
-                <Link href="/signup" className="signup-btn">Sign In</Link>
-              </>
+            {
+              user? <Link href="/profile">Profile</Link> : <Link href="/login">Sign In</Link>
+            }
           </div>
         </div>
         <div className="links select_n">

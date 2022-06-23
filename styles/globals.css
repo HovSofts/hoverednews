@@ -50,12 +50,17 @@ html{
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
+*::selection{
+  background: #5a5a5a;
+  color: #ffffff;
+}
 body{
   padding: 0;
   margin: 0;
   background: var(--bgColor1);
 }
 
+/* Page Body CSS */
 .page_body{
   width: 1300px;
   right: 0;
@@ -79,13 +84,17 @@ body{
     margin-top: 170px;
   }
 }
+/* Page Body CSS End */
 
+/* .page Div CSS */
 .page{
   margin-top: -80px;
   padding-bottom: 50px;
   min-height: 300px;
 }
+/* .page Div CSS End */
 
+/* Container CSS */
 .container{
   max-width: 1300px;
   margin: 0 auto;
@@ -96,6 +105,7 @@ body{
     padding: 0 15px;
   }
 }
+/* Container CSS End */
 
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -104,6 +114,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
+/* CSS For preventing selection of text of images
+   Use the ".select_n" class to prevent selection for an element or for all the childs of an element
+*/
 .select_n, .select_n *, button, img, label{
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -112,11 +125,8 @@ input[type="search"]::-webkit-search-results-decoration {
   -ms-user-select: none;
   user-select: none;
 }
+/* CSS For preventing selection of text of images End */
 
-*::selection{
-  background: #5a5a5a;
-  color: #ffffff;
-}
 
 /***** News Ticker *****/
 .news_ticker{

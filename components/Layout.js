@@ -5,7 +5,7 @@ import Footer from "./Footer"
 import { Snackbar } from "@mui/material";
 import { Alert } from "@mui/material";
 
-export default function Layout({ children, showPageTransition, showSnackbar, snackbarData, setShowSnackbar }) {
+export default function Layout({ user, uid, avatar, children, currentUser, showPageTransition, showSnackbar, snackbarData, setShowSnackbar }) {
   
   return (
     <>
@@ -29,7 +29,7 @@ export default function Layout({ children, showPageTransition, showSnackbar, sna
 
       <div className="app">
         <Script src="https://kit.fontawesome.com/19b88b9e2d.js" crossorigin="anonymous" />
-        <Navbar />
+        <Navbar user={user} currentUser={currentUser} avatar={avatar} uid={uid} />
   
         <div className="page_body">
           {children}

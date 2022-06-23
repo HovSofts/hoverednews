@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const nextConfig = {
   reactStrictMode: true,
   images: {
-      domains: ['firebasestorage.googleapis.com', 'cdn.weatherapi.com'],
+      domains: ['firebasestorage.googleapis.com', 'cdn.weatherapi.com', 'ui-avatars.com'],
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.plugins.push(

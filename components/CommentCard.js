@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
+import { db, storage } from '../firebaseClient';
+import { ref, getDownloadURL } from 'firebase/storage';
 import ReactDOMServer from 'react-dom/server';
 import $ from 'jquery'
+import { doc, getDoc } from 'firebase/firestore';
 
-export default function CommentCard({comment, replies, topParent, canReply, actions}) {
-  const [editFormShow, setEditFormShow] = useState(false);
-  const [replyFormShow, setReplyFormShow] = useState(false);
+export default function CommentCard({comment, uid}) {
+  const [editFormShow, setEditFormShow] = useState(false)
   const [commentData, setCommentData] = useState(comment);
-  const [commentText, setCommentText] = useState(comment.text);
-  const [repliesData, setRepliesData] = useState(replies);
-
-  useEffect(() => {
-    if(editFormShow !== false){
-      $('.edit_form textarea').val(editFormShow)
-      document.querySelector('.edit_form textarea').focus();
-      setReplyFormShow(false)
-    }
-  }, [editFormShow]);
-
-  useEffect(() => {
-    if(editFormShow !== false){
-      document.querySelector('.reply_comment_text').focus();
-      setEditFormShow(false)
-    }
-  }, [replyFormShow]);
+  const [commentText, setCommentText] = useState(comment.commentText);
 
   const updateComment = event => {
     event.preventDefault();
@@ -34,44 +20,49 @@ export default function CommentCard({comment, replies, topParent, canReply, acti
     setEditFormShow(false)
   }
 
-  const addReply = event => {
-    event.preventDefault();
+  // Get avatar
+  const [name, setName] = useState('')
+  const [avatar, setAvatar] = useState('https://firebasestorage.googleapis.com/v0/b/hovered-news.appspot.com/o/App%20Files%2Favatar.png?alt=media&token=1be05c8c-321a-4a36-85e8-aee81cc1c884');
 
-    document.querySelector('.comment_card_'+topParent+' .replies').innerHTML += ReactDOMServer.renderToString(<CommentCard comment={{
-      name: 'Anonymous',
-      image: 'https://via.placeholder.com/150',
-      createdAt: '03/03/2022',
-      text: event.target.reply_comment_text.value,
-      commentId: commentData.commentId+''+repliesData.length,
-      parentId: topParent
-    }} topParent={topParent} key={commentData.commentId+''+repliesData.length} replies={[]} />);
+  useEffect(() => {
+    if(uid !== 'anonymous'){
+      getDownloadURL(ref(storage, `Profile Pictures/profile_picture_${uid}`)).then((url) => {
+        setAvatar(url)
+      })
+  
+      getDoc(doc(db, 'users', uid)).then((doc) => {
+        if(doc.exists){
+          const data = doc.data().data;
+  
+          setName(data.name);
+        }
+      })
+    }
 
-    setReplyFormShow(false)
-  }
+    else{
+      setName('Anonymous')
+    }
+  }, [])
 
   return (
     <>
-      <div className={'comment_card comment_card_'+comment.commentId}>
+      <div className={'comment_card comment_card_'+comment.docId}>
         <div className='image'>
-          <Image width="100%" src={comment.image} layout="fill" alt='Commenter' />
+          <Image width="100%" src={avatar} layout="fill" alt='Commenter' />
         </div>
         <div className='details'>
           <div className='top'>
             <div className='left'>
-              <div className='name'>{commentData.name}</div>
-              <div className='date'> - {commentData.createdAt} | </div>
+              <div className='name'>{name}</div>
+              <div className='date'> - 20th March, 2022 | </div>
             </div>
             {
-              actions === 'none'? '' :
+              comment.uid === uid?
               <div className='actions'>
-                <div className='edit' onClick={() => {setEditFormShow(commentData.text)}}>Edit</div>
-                {
-                  canReply?
-                  <div className='reply' onClick={() => {setReplyFormShow(true)}}>Reply</div>
-                  : ''
-                }
+                <div className='edit' onClick={() => {setEditFormShow(commentText)}}>Edit</div>
                 <div className='delete'>Delete</div>
               </div>
+              : ''
             }
           </div>
           <div className='text'>{commentText}</div>
@@ -90,36 +81,6 @@ export default function CommentCard({comment, replies, topParent, canReply, acti
               <div className='actions' style={{marginTop: '10px'}}>
                 <button className='submit_btn w_min'>Update Comment</button>
                 <button className='submit_btn w_min bg_gray' type='button' onClick={() => {setEditFormShow(false)}}>Cancel</button>
-              </div>
-            </form>
-          }
-  
-          {
-            repliesData.length > 0 && (
-              <div className='replies'>
-                {
-                  repliesData.map(reply => (
-                    <CommentCard comment={reply} canReply={false} topParent={topParent} key={reply.id} replies={[]} />
-                  ))
-                }
-              </div>
-            )
-          }
-
-          {
-            replyFormShow === false?
-            <></>
-            :
-            <form className='reply_form default bg_w' onSubmit={addReply}>
-              <div className='inputs'>
-                <div className='input_container'>
-                  <label>Reply to this comment</label>
-                  <textarea style={{height: '80px'}} className='reply_comment_text' name='reply_comment_text' required></textarea>
-                </div>
-              </div>
-              <div className='actions' style={{marginTop: '10px'}}>
-                <button className='submit_btn w_min'>Reply</button>
-                <button className='submit_btn w_min bg_gray' type='button' onClick={() => {setReplyFormShow(false)}}>Cancel</button>
               </div>
             </form>
           }
