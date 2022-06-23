@@ -75,7 +75,6 @@ export default function Profile({ user, currentUser, uid, avatar, setAvatar, set
             <ul className='links'>
               <li className='active'><Link href='/profile'>Profile</Link></li>
               <li><Link href='/profile/edit-profile'>Edit Profile</Link></li>
-              <li><Link href='/profile/change-email'>Change Email</Link></li>
               <li><Link href='/profile/change-password'>Change Password</Link></li>
               <li><a onClick={logout}>Logout</a></li>
             </ul>

@@ -54,6 +54,29 @@ export default function EditProfile({ avatar, currentUser, setShowPageTransition
     })
   }
 
+  function updateProfileInfo(e){
+    e.preventDefault();
+
+    if(e.target.name.value === currentUser.displayName){
+      return;
+    }
+    
+    updateProfile(auth.currentUser, {
+      displayName: e.target.name.value
+    }).then(() => {
+      document.querySelectorAll('.profile_info .name').forEach((name) => {
+        name.innerHTML = e.target.name.value;
+      })
+    })
+  }
+
+  function handleNameChange(e){
+    if(e.target.value.length > 25){
+      e.target.blur()
+      e.target.value = e.target.value.substring(0, 25)
+    }
+  }
+
   return (
     <div className='edit_profile_page my_account_page page'>
       <div className='container'>
@@ -76,14 +99,13 @@ export default function EditProfile({ avatar, currentUser, setShowPageTransition
             <ul className='links'>
               <li><Link href='/profile'>Profile</Link></li>
               <li className='active'><Link href='/edit-profile'>Edit Profile</Link></li>
-              <li><Link href='/profile/change-email'>Change Email</Link></li>
               <li><Link href='/profile/change-password'>Change Password</Link></li>
               <li><a onClick={logout}>Logout</a></li>
             </ul>
           </div>
   
           <div className='main_content'>
-            <form className='default' style={{maxWidth: '300px'}}>
+            <form className='default' style={{maxWidth: '300px'}} onSubmit={updateProfileInfo}>
               <div className='form_header'>
                 <h2>Edit Profile Info</h2>
               </div>
@@ -91,7 +113,7 @@ export default function EditProfile({ avatar, currentUser, setShowPageTransition
               <div className='inputs'>
                 <div className='input_container'>
                   <label htmlFor='name'>Edit You Name</label>
-                  <input type='text' name='name' id='name' placeholder='Write you name' requried />
+                  <input type='text' name='name' id='name' placeholder='Write you name' onChange={handleNameChange} requried />
                 </div>
               </div>
 

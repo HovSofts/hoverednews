@@ -4,21 +4,12 @@ import { db, storage } from '../firebaseClient';
 import { ref, getDownloadURL } from 'firebase/storage';
 import ReactDOMServer from 'react-dom/server';
 import $ from 'jquery'
-import { doc, getDoc } from 'firebase/firestore';
+import { deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 
-export default function CommentCard({comment, uid}) {
+export default function CommentCard({comment, newsId, currentUID, uid}) {
   const [editFormShow, setEditFormShow] = useState(false)
   const [commentData, setCommentData] = useState(comment);
   const [commentText, setCommentText] = useState(comment.commentText);
-
-  const updateComment = event => {
-    event.preventDefault();
-    console.log(event)
-    commentData.text = event.target.text.value;
-    setCommentText(event.target.text.value);
-
-    setEditFormShow(false)
-  }
 
   // Get avatar
   const [name, setName] = useState('')
@@ -44,6 +35,45 @@ export default function CommentCard({comment, uid}) {
     }
   }, [])
 
+  useEffect(() => {
+    if(!editFormShow){
+  
+    }
+    else{
+      document.querySelector('.comment_card_'+comment.docId+' .edit_form textarea').value = editFormShow;
+    }
+  }, [editFormShow])
+
+  const updateComment = event => {
+    event.preventDefault();
+
+    if(event.target.text.value === ''){
+      deleteComment();
+
+      return;
+    }
+
+    updateDoc(doc(doc(db, 'news', newsId), 'comments', comment.docId), {
+      'data.commentText': event.target.text.value
+    }).catch((error) => {
+      alert('Something went wrong. Please try again.')
+    })
+    
+    comment.commentText = event.target.text.value;
+    setCommentText(event.target.text.value);
+    setEditFormShow(false)
+  }
+
+  function deleteComment(){
+    const confirmDelete = confirm('Are you sure that you want to delete this comment?');
+
+    if(confirmDelete){
+      deleteDoc(doc(doc(db, 'news', newsId), 'comments', comment.docId)).then(() => {
+        document.querySelector('.comment_card_'+comment.docId).remove();
+      })
+    }
+  }
+
   return (
     <>
       <div className={'comment_card comment_card_'+comment.docId}>
@@ -54,13 +84,13 @@ export default function CommentCard({comment, uid}) {
           <div className='top'>
             <div className='left'>
               <div className='name'>{name}</div>
-              <div className='date'> - 20th March, 2022 | </div>
+              <div className='date'> - 20th March, 2022{comment.uid === currentUID?' | ': ''}</div>
             </div>
             {
-              comment.uid === uid?
+              comment.uid === currentUID?
               <div className='actions'>
                 <div className='edit' onClick={() => {setEditFormShow(commentText)}}>Edit</div>
-                <div className='delete'>Delete</div>
+                <div className='delete' onClick={deleteComment}>Delete</div>
               </div>
               : ''
             }

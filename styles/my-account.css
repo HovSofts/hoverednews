@@ -125,7 +125,11 @@
   .my_account_page .main_content{
     width: 100%;
     margin-left: 0;
-    margin-top: 30px;
+    margin-top: 20px;
+    padding-left: 0;
+    border: none;
+    border-top: 2px solid var(--bgColor2);
+    padding-top: 15px;
   }
 }
 .my_account_page .main_content section{

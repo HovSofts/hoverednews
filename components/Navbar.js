@@ -87,7 +87,7 @@ export default function Navbar({ user, currentUser, uid, avatar }) {
           <div className="date">{today}</div>
           <div className="time">{time}</div>
         </div>
-        <div className="profile">
+        <div className="profile profile_info">
           <div className="image">
             <Image src={avatar} alt='Avatar' height={100} width={100} />
           </div>
