@@ -99,27 +99,27 @@ export default function Contact({ setShowPageTransition, currentUser }) {
                
               <div className='content'>
                 <div className='item'>
-                  <div className='toggle_btn 1' onClick={()=> {$('.toggle_btn.1').toggleClass('show')}}>Curabitur eget leo at velit imperdiet viaculis vitaes? <span className='fas fa-chevron-down'></span></div>
+                  <div className='toggle_btn 1' onClick={()=> {$('.toggle_btn.1').toggleClass('show')}}>Do we pulish articles from users? <span className='fas fa-caret-down'></span></div>
                   <div className='toggle_content'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Nullam tortor nunc, bibendum vitae semper a, volutpat eget massa.</p>
+                    <p>Yes! You can send your article to our mail "hoverednews@gmail.com" or send us your article via the contact form.</p>
                   </div>
                 </div>
                 <div className='item'>
-                  <div className='toggle_btn 2' onClick={()=> {$('.toggle_btn.2').toggleClass('show')}}>Curabitur eget leo at velit imperdiet viaculis vitaes? <span className='fas fa-chevron-down'></span></div>
+                  <div className='toggle_btn 2' onClick={()=> {$('.toggle_btn.2').toggleClass('show')}}>Which data we collect from user? <span className='fas fa-caret-down'></span></div>
                   <div className='toggle_content'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Nullam tortor nunc, bibendum vitae semper a, volutpat eget massa.</p>
+                    <p>We collect user's name, profile picture and email if they submit our newsletter subscription form.</p>
                   </div>
                 </div>
                 <div className='item'>
-                  <div className='toggle_btn 3' onClick={()=> {$('.toggle_btn.3').toggleClass('show')}}>Curabitur eget leo at velit imperdiet viaculis vitaes? <span className='fas fa-chevron-down'></span></div>
+                  <div className='toggle_btn 3' onClick={()=> {$('.toggle_btn.3').toggleClass('show')}}>Can you visit our office location? <span className='fas fa-caret-down'></span></div>
                   <div className='toggle_content'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Nullam tortor nunc, bibendum vitae semper a, volutpat eget massa.</p>
+                    <p>Yes. You can visit our office location for any dealing and query.</p>
                   </div>
                 </div>
                 <div className='item'>
-                  <div className='toggle_btn 4' onClick={()=> {$('.toggle_btn.4').toggleClass('show')}}>Curabitur eget leo at velit imperdiet viaculis vitaes? <span className='fas fa-chevron-down'></span></div>
+                  <div className='toggle_btn 4' onClick={()=> {$('.toggle_btn.4').toggleClass('show')}}>Do we collect any private data? <span className='fas fa-caret-down'></span></div>
                   <div className='toggle_content'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Nullam tortor nunc, bibendum vitae semper a, volutpat eget massa.</p>
+                    <p>No we don't collect any private data. We only collect your email, name and profile picture information. We are always transparent about what we collect from you.</p>
                   </div>
                 </div>
               </div>
