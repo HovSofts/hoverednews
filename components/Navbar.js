@@ -94,7 +94,7 @@ export default function Navbar({ user, currentUser, uid, avatar }) {
           <div className="name">{currentUser.displayName}</div>
           <div className="actions">
             {
-              user? <Link href="/profile">Profile</Link> : <Link href="/login">Sign In</Link>
+              user? <Link href="/profile"><a onClick={() => {setShowSidebar(!showSidebar)}}>Profile</a></Link> : <Link href="/login"><a onClick={() => {setShowSidebar(!showSidebar)}}>Sign In</a></Link>
             }
           </div>
         </div>

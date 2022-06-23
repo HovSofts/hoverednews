@@ -82,7 +82,7 @@ export default function Contact({ setShowPageTransition, currentUser }) {
                   </div>
                   <div className='input_container'>
                     <label htmlFor='subject'>Message</label>
-                    <textarea type='text' id='subject' name='message' placeholder='Your Message'></textarea>
+                    <textarea id='subject' name='message' placeholder='Your Message'></textarea>
                   </div>
                 </div>
 
