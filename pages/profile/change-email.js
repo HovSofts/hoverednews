@@ -75,8 +75,8 @@ export default function EditProfile({ avatar, currentUser, setShowPageTransition
 
             <ul className='links'>
               <li><Link href='/profile'>Profile</Link></li>
-              <li className='active'><Link href='/edit-profile'>Edit Profile</Link></li>
-              <li><Link href='/profile/change-email'>Change Email</Link></li>
+              <li><Link href='/profile/edit-profile'>Edit Profile</Link></li>
+              <li className='active'><Link href='/profile/change-email'>Change Email</Link></li>
               <li><Link href='/profile/change-password'>Change Password</Link></li>
               <li><a onClick={logout}>Logout</a></li>
             </ul>
