@@ -21,6 +21,8 @@ export default function Comments({ newsId, commentsData, user, uid }) {
           commentedAt: serverTimestamp()
         }
       }).then((docRef) => {
+        const docId = docRef.id;
+
         updateDoc(docRef, {
           "data.docId": docRef.id
         }).then(() => {
@@ -30,6 +32,7 @@ export default function Comments({ newsId, commentsData, user, uid }) {
           setNewComments(oldComments => [...oldComments, {
             uid: uid,
             commentText: commentText,
+            docId: docId,
             commentedAt: new Date()
           }])
         })
@@ -44,6 +47,8 @@ export default function Comments({ newsId, commentsData, user, uid }) {
           commentedAt: serverTimestamp()
         }
       }).then((docRef) => {
+        const docId = docRef.id;
+
         updateDoc(docRef, {
           "data.docId": docRef.id
         }).then(() => {
@@ -51,6 +56,7 @@ export default function Comments({ newsId, commentsData, user, uid }) {
           
           setNewComments(oldComments => [...oldComments, {
             uid: 'anonymous',
+            docId: docId,
             commentText: commentText,
             commentedAt: new Date()
           }])
