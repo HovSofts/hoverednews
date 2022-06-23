@@ -90,7 +90,7 @@ export default function EditProfile({ avatar, currentUser, setShowPageTransition
 
               <div className='inputs'>
                 <div className='input_container'>
-                  <label for='name'>Edit You Name</label>
+                  <label htmlFor='name'>Edit You Name</label>
                   <input type='text' name='name' id='name' placeholder='Write you name' requried />
                 </div>
               </div>

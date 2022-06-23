@@ -95,22 +95,22 @@ export default function Signup({ user, setShowPageTransition }) {
   
             <div className='inputs'>
               <div className='input_container'>
-                <label className='label' for='name'>Name</label>
+                <label className='label' htmlFor='name'>Name</label>
                 <input className='input' id='name' type='name' name='name' placeholder='Enter your name' onChange={handleNameChange} required />
               </div>
   
               <div className='input_container'>
-                <label className='label' for='email'>Email</label>
+                <label className='label' htmlFor='email'>Email</label>
                 <input className='input' id='email' type='email' name='email' placeholder='Enter your email' required />
               </div>
   
               <div className='input_container'>
-                <label className='label' for='password'>Password</label>
+                <label className='label' htmlFor='password'>Password</label>
                 <input className='input' id='password' type='password' placeholder='Enter your password' required />
               </div>
   
               <div className='input_container'>
-                <label className='label' for='confirmPassword'>Confirm Password</label>
+                <label className='label' htmlFor='confirmPassword'>Confirm Password</label>
                 <input className='input' id='confirmPassword' type='password' placeholder='Enter your password again' required />
               </div>
             </div>

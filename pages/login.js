@@ -45,12 +45,12 @@ export default function Login({ user, setShowPageTransition }) {
   
             <div className='inputs'>
               <div className='input_container'>
-                <label className='label' for='email'>Email</label>
+                <label className='label' htmlFor='email'>Email</label>
                 <input className='input' id='email' type='email' name='email' placeholder='Enter your email' required />
               </div>
   
               <div className='input_container'>
-                <label className='label' for='password'>Password</label>
+                <label className='label' htmlFor='password'>Password</label>
                 <input className='input' id='password' type='password' name='password' placeholder='Enter your password' required />
               </div>
             </div>
