@@ -72,6 +72,7 @@
   margin-top: 10px;
   font-size: 15px;
   font-family: var(--fontFamily1);
+  word-break: break-all;
   font-weight: 400;
 }
 
