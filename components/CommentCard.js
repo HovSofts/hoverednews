@@ -6,10 +6,23 @@ import ReactDOMServer from 'react-dom/server';
 import $ from 'jquery'
 import { deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 
-export default function CommentCard({comment, newsId, currentUID, uid}) {
+export default function CommentCard({comment, newComment, newsId, currentUID, uid}) {
   const [editFormShow, setEditFormShow] = useState(false)
   const [commentData, setCommentData] = useState(comment);
   const [commentText, setCommentText] = useState(comment.commentText);
+  const [commentDate, setCommentDate] = useState('')
+
+  useEffect(() =>  {
+    var commentedAtSplitted;
+    if(newComment){
+      commentedAtSplitted = comment.commentedAt.toString().split(" ");
+      setCommentDate(commentedAtSplitted[1]+' '+commentedAtSplitted[2]+', '+commentedAtSplitted[3])
+    }
+    else{
+      commentedAtSplitted = comment.commentedAt.toDate().toString().split(" ");
+      setCommentDate(commentedAtSplitted[1]+' '+commentedAtSplitted[2]+', '+commentedAtSplitted[3])
+    }
+  }, [])
 
   // Get avatar
   const [name, setName] = useState('')
@@ -84,7 +97,7 @@ export default function CommentCard({comment, newsId, currentUID, uid}) {
           <div className='top'>
             <div className='left'>
               <div className='name'>{name}</div>
-              <div className='date'> - 20th March, 2022{comment.uid === currentUID?' | ': ''}</div>
+              <div className='date'> - {commentDate}{comment.uid === currentUID?' | ': ''}</div>
             </div>
             {
               comment.uid === currentUID?

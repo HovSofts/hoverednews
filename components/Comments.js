@@ -30,7 +30,7 @@ export default function Comments({ newsId, commentsData, user, uid }) {
           setNewComments(oldComments => [...oldComments, {
             uid: uid,
             commentText: commentText,
-            commentedAt: new Date().getTime()
+            commentedAt: new Date()
           }])
         })
       })
@@ -52,7 +52,7 @@ export default function Comments({ newsId, commentsData, user, uid }) {
           setNewComments(oldComments => [...oldComments, {
             uid: 'anonymous',
             commentText: commentText,
-            commentedAt: new Date().getTime()
+            commentedAt: new Date()
           }])
         })
       })
@@ -67,14 +67,14 @@ export default function Comments({ newsId, commentsData, user, uid }) {
         {
           newComments.reverse().map((comment, index) => {
             return(
-              <CommentCard key={index} uid={comment.uid} newsId={newsId} currentUID={uid} comment={comment} />
+              <CommentCard key={index} newComment={true} uid={comment.uid} newsId={newsId} currentUID={uid} comment={comment} />
             )
           })
         }
         {
           commentsData.map((comment, index) => {
             return(
-              <CommentCard key={index} uid={comment.uid} newsId={newsId} currentUID={uid} comment={comment} />
+              <CommentCard key={index} newComment={false} uid={comment.uid} newsId={newsId} currentUID={uid} comment={comment} />
             )
           })
         }
