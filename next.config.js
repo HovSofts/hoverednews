@@ -1,12 +1,18 @@
 /** @type {import('next').NextConfig} */
 const webpack = require('webpack');
+const withPWA = require('next-pwa');
 
-const nextConfig = {
+const nextConfig = withPWA({
   reactStrictMode: true,
+  pwa:{
+    dest: 'public',
+    register: true,
+    skipWaiting: true
+  },
   images: {
       domains: ['firebasestorage.googleapis.com', 'cdn.weatherapi.com', 'ui-avatars.com'],
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config, { webpack }) => {
     config.plugins.push(
       new webpack.ProvidePlugin({
         $: "jquery",
@@ -21,6 +27,6 @@ const nextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   }
-}
+})
 
 module.exports = nextConfig
